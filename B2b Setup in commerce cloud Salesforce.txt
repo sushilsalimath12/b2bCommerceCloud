@@ -1,0 +1,36 @@
+For prodcuts sheet below are expected columns of data.
+
+Product Name	
+Product StockKeepingUnit	
+Product ProductClass	
+Product Description
+
+Setup buyer in b2b
+1. setup account
+2. setup user
+3. give permissions(buyer permission to user)
+4. assign buyer group (Also assign the buyer permission to user)
+
+Set up B2B Store
+1. Set up CMS for storing media
+2. Setup Categories
+3. Setup Products under categories
+4. Setup Pricebook Entries
+5. Setup Buyer Groups
+6. Setup Entitlement Policies
+7. Rebuild Search index
+
+Select id from pricebook2
+Once all products are imported.
+Execute
+List<Product2> productList = [SELECT Id, IsActive FROM Product2 WHERE CreatedDate = TODAY];
+for(Product2 productObject : productList) {
+    productObject.IsActive = true;
+}
+update productList;
+
+List<PricebookEntry> pricebookEntryList = [SELECT Id, IsActive FROM PricebookEntry WHERE Pricebook2Id = '015G00000JP2YA3'];
+for(PricebookEntry pb : pricebookEntryList) {
+    pb.IsActive = true;
+}
+update pricebookEntryList;x	
